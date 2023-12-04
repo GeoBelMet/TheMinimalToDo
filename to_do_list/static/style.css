@@ -1,0 +1,22 @@
+body {
+  background-image: url("https://th.bing.com/th/id/OIP.6SB2PKM8_HCHV_wyWyf9awAAAA?rs=1&pid=ImgDetMain");
+  font-family:"Courier New", Courier, monospace;
+  text-align: center;
+}
+h1 {
+  color: black;
+  text-align: center;
+  text-decoration: underline;
+}
+h2 {
+  color: gray;
+  text-decoration: underline;
+
+}
+h3 {
+  color: gray;
+  text-decoration: overline;
+}
+p {
+  color: rgb(255, 0, 0);
+}

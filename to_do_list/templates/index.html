@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo List</title>
+    <style>
+        .completed {
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+    <h1>The Minimal To Do List</h1>
+    <form action="/add" method="post">
+        <label for="task">New Task:</label>
+        <input type="text" id="task" name="task" required>
+        <button type="submit">+</button>
+    </form>
+    <ol>
+        <h2>To Do</h2>
+        Figure out how to pop completed task from "To Do" to "Completed"
+        {% for task in tasks %}
+            <li class="{% if task.complete %}completed{% endif %}">
+                {{ task.content }}
+                {% if not task.complete %}
+                    <a href="{{ url_for('complete_task', task_id=loop.index-1) }}">Complete</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+        
+    </ol>
+    <ol>
+        <h3>Completed</h3>
+        {% for task in tasks %}
+            <li class="{% if task.complete %}completed{% endif %}">
+                {{ task.content }}
+                {% if not task.complete %}
+                    <a href="{{ url_for('complete_task', task_id=loop.index-1) }}">Complete</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+
+    </ol>
+</body>
+</html>
