@@ -20,3 +20,7 @@ h3 {
 p {
   color: rgb(255, 0, 0);
 }
+ul {
+  text-align: center;
+  padding: 0;
+}

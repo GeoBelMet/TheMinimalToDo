@@ -20,27 +20,28 @@
     </form>
     <ol>
         <h2>To Do</h2>
-        Figure out how to pop completed task from "To Do" to "Completed"
         {% for task in tasks %}
-            <li class="{% if task.complete %}completed{% endif %}">
-                {{ task.content }}
+            <ul>
                 {% if not task.complete %}
+                {{ task.content }}
                     <a href="{{ url_for('complete_task', task_id=loop.index-1) }}">Complete</a>
                 {% endif %}
-            </li>
+            </ul>
         {% endfor %}
         
     </ol>
     <ol>
         <h3>Completed</h3>
+
         {% for task in tasks %}
-            <li class="{% if task.complete %}completed{% endif %}">
+            <ul class="{% if task.complete %}completed{% endif %}">
+                {%if task.complete %}
                 {{ task.content }}
-                {% if not task.complete %}
-                    <a href="{{ url_for('complete_task', task_id=loop.index-1) }}">Complete</a>
-                {% endif %}
-            </li>
-        {% endfor %}
+                {% endif %} 
+            </ul>
+    {% endfor %}
+      
+        
 
     </ol>
 </body>

@@ -1,10 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for
-
+import uuid
 app = Flask(__name__)
 
 # Sample data to store tasks
 tasks = []
-completed_tasks = []
+
 
 @app.route('/')
 def index():
@@ -14,8 +14,11 @@ def index():
 def add_task():
     task = request.form.get('task')
     if task:
-        tasks.append({'content': task, 'complete': False})
-        completed_tasks.append(({'content': task, 'complete': True}))
+        id = uuid.uuid4()
+        tasks.append({'id': id, 'content': task, 'complete': False})
+        print(id)
+        print(tasks)
+
     return redirect(url_for('index'))
 
 @app.route('/complete/<int:task_id>')
